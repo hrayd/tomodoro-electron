@@ -1,0 +1,39 @@
+Arguments: 
+  /Users/donghui/.nvm/versions/node/v10.20.1/bin/node /usr/local/bin/yarn add electron timer.js
+
+PATH: 
+  /Users/donghui/.nvm/versions/node/v10.20.1/bin:/Users/donghui/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/donghui/.nvm/versions/node/v10.20.1/bin:/Users/donghui/.cargo/bin:/Users/donghui/Library/flutter/bin:/Users/donghui/Library/flutter/bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  10.20.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/electron: ETIMEDOUT
+      at Timeout._onTimeout (/usr/local/lib/node_modules/yarn/lib/cli.js:141408:19)
+      at ontimeout (timers.js:436:11)
+      at tryOnTimeout (timers.js:300:5)
+      at listOnTimeout (timers.js:263:5)
+      at Timer.processTimers (timers.js:223:10)
+
+npm manifest: 
+  {
+    "name": "tomodoro-electron",
+    "version": "0.0.1",
+    "description": "a tomodoro app using electron",
+    "main": "main.js",
+    "repository": "https://github.com/artyhacker/tomodoro-electron",
+    "author": "artyhacker",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
