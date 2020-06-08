@@ -6,15 +6,15 @@ let win;
 
 app.on('ready', () => {
   win = new BrowserWindow({
-    width: 800,
-    height: 500,
+    width: 200,
+    height: 200,
     webPreferences: {
       nodeIntegration: true,
     },
   });
   win.loadFile('./index.html');
   ipcMain.handle('clock', handleClock);
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();  // 开启控制台
 });
 
 const handleClock = async function() {
