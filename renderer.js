@@ -1,16 +1,19 @@
 const { ipcRenderer } = require('electron');
 const Timer = require('timer.js');
 
+const DEFAULT_TIME = 20;
+
 let currentTime = null;
 
 const startWork = () => {
   if (currentTime && currentTime.getStatus() === 'paused') {
     currentTime.start();
+    endWorkBtn.innerHTML = '暂停工作';
   } else {
     currentTime = new Timer({
       ontick: updateTime,
       onend: stopWork,
-    }).start(20);
+    }).start(DEFAULT_TIME);
   }
 };
 
@@ -44,6 +47,10 @@ startWorkBtn.onclick = startWork;
 endWorkBtn.onclick = () => {
   if (currentTime && currentTime.getStatus() === 'started') {
     currentTime.pause();
+    endWorkBtn.innerHTML = '重新开始';
+  } else if (currentTime && currentTime.getStatus() === 'paused') {
+    currentTime.start(DEFAULT_TIME);
+    endWorkBtn.innerHTML = '暂停工作';
   }
 };
 startRestBtn.onclick = () => console.log('start rest');
