@@ -30,7 +30,7 @@ const stopWork = () => {
   ipcRenderer.invoke('clock').then((res) => {
     if (res === 'rest') {
       setTimeout(() => {
-        new Notification('Have a rest', { body: 'Rest 5 minutes!' });
+        new Notification('休息一会儿吧', { body: '看看远处，喝杯咖啡～' });
       }, 0);
     } else if (res === 'work') {
       setTimeout(() => startWork(), 0);
@@ -40,8 +40,6 @@ const stopWork = () => {
 
 const startWorkBtn = document.getElementById('start-work');
 const endWorkBtn = document.getElementById('end-work');
-const startRestBtn = document.getElementById('start-rest');
-const endRestBtn = document.getElementById('end-rest');
 
 startWorkBtn.onclick = startWork;
 endWorkBtn.onclick = () => {
@@ -53,5 +51,3 @@ endWorkBtn.onclick = () => {
     endWorkBtn.innerHTML = '暂停工作';
   }
 };
-startRestBtn.onclick = () => console.log('start rest');
-endRestBtn.onclick = () => console.log('end rest');
