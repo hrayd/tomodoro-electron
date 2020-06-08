@@ -6,14 +6,16 @@ const DEFAULT_TIME = 20;
 let currentTime = null;
 
 const startWork = () => {
-  if (currentTime && currentTime.getStatus() === 'paused') {
-    currentTime.start();
-    endWorkBtn.innerHTML = '暂停工作';
+  if (currentTime && currentTime.getStatus() === 'started') {
+    currentTime.stop();
+    currentTime.start(DEFAULT_TIME);
   } else {
     currentTime = new Timer({
       ontick: updateTime,
       onend: stopWork,
     }).start(DEFAULT_TIME);
+    startWorkBtn.innerHTML = '重新开始';
+    endWorkBtn.innerHTML = '暂停工作';
   }
 };
 
@@ -45,9 +47,10 @@ startWorkBtn.onclick = startWork;
 endWorkBtn.onclick = () => {
   if (currentTime && currentTime.getStatus() === 'started') {
     currentTime.pause();
-    endWorkBtn.innerHTML = '重新开始';
+    endWorkBtn.innerHTML = '继续工作';
+    startWorkBtn.innerHTML = '重新开始';
   } else if (currentTime && currentTime.getStatus() === 'paused') {
-    currentTime.start(DEFAULT_TIME);
+    currentTime.start();
     endWorkBtn.innerHTML = '暂停工作';
   }
 };
