@@ -2,9 +2,11 @@ const { BrowserWindow, ipcMain, app, Notification } = require('electron');
 
 let win;
 
+// app.accessibilitySupportEnabled(true);
+
 app.on('ready', () => {
   win = new BrowserWindow({
-    width: 400,
+    width: 800,
     height: 500,
     webPreferences: {
       nodeIntegration: true,
@@ -12,15 +14,16 @@ app.on('ready', () => {
   });
   win.loadFile('./index.html');
   ipcMain.handle('clock', handleClock);
+  win.webContents.openDevTools();
 });
 
 const handleClock = async function() {
   const res = new Promise((resolve, reject) => {
     const nt = new Notification({
-      title: 'Mission Completed!',
-      body: 'Rest or Not?',
-      actions: [{ type: 'button', text: 'Continue working' }],
-      closeButtonText: 'Have a rest!',
+      title: '番茄时间到！',
+      body: '是否开始休息?',
+      actions: [{ type: 'button', text: '继续下一个番茄！' }],
+      closeButtonText: '休息一会儿～',
     });
     nt.show();
     nt.on('action', () => {
@@ -32,3 +35,7 @@ const handleClock = async function() {
   });
   return res;
 };
+
+app.on('window-all-closed', () => {
+  app.quit()
+});
