@@ -3,10 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="./styles.css">
+  <title>Tomodoro</title>
 </head>
 <body>
-  <div id="root">123</div>
+  <div id="root">
+    <div id="time">00:00</div>
+    <div class="btns">
+      <button id="start-work">开始工作</button>
+      <button id="end-work">暂停工作</button>
+      <button id="start-rest">开始休息</button>
+      <button id="end-rest">结束休息</button>
+    </div>
+  </div>
   <script src="./renderer.js"></script>
 </body>
 </html>
